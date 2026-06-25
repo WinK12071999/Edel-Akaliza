@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Blessing Celebration — Edel & Akaliza</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for smooth entry animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #fdfcf7;
+            --text-color: #2c2523;
+            --gold: #c5a059;
+            --gold-light: #e5d5b7;
+            --gold-dark: #9a7632;
+            --burgundy: #5c1322;
+            --rose-gold: #b76e79;
+            --blush: #fcf0f0;
+            --serif-font: 'Cormorant Garamond', serif;
+            --heading-font: 'Cinzel', serif;
+            --script-font: 'Alex Brush', cursive;
+            --sans-font: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            background-color: #1a0509;
+            color: var(--text-color);
+            font-family: var(--serif-font);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        /* --- ENVELOPE OPENING EXPERIENCE --- */
+        #envelope-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a0509; /* Deep luxury burgundy background */
+            background-image: radial-gradient(circle, #3d0d17 0%, #1a0509 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.2s cubic-bezier(0.77, 0, 0.175, 1), visibility 1.2s;
+        }
+
+        #envelope-container.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 550px;
+            height: 380px;
+            cursor: pointer;
+            perspective: 1500px;
+        }
+
+        @media (max-width: 600px) {
+            .envelope-wrapper {
+                width: 90%;
+                height: 280px;
+            }
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--burgundy);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        /* Envelope Flap */
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 275px solid transparent;
+            border-right: 275px solid transparent;
+            border-top: 190px solid #72192b; /* Slightly lighter burgundy */
+            transform-origin: top;
+            transition: transform 0.8s ease 0.3s, z-index 0.2s ease 0.5s;
+            z-index: 4;
+        }
+
+        @media (max-width: 600px) {
+            .envelope::before {
+                border-left-width: 170px;
+                border-right-width: 170px;
+                border-top-width: 140px;
+            }
+        }
+
+        /* Opened state of flap */
+        .envelope-wrapper.open .envelope::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+            border-top-color: #4a0e1b;
+        }
+
+        /* Envelope pockets */
+        .envelope-pockets {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            overflow: hidden;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .envelope-pockets::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 275px solid #4a0e1b;
+            border-bottom: 190px solid #4a0e1b;
+            border-right: 275px solid transparent;
+        }
+
+        .envelope-pockets::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 275px solid #4a0e1b;
+            border-bottom: 190px solid #4a0e1b;
+            border-left: 275px solid transparent;
+        }
+
+        @media (max-width: 600px) {
+            .envelope-pockets::before {
+                border-left-width: 170px;
+                border-bottom-width: 140px;
+                border-right-width: 170px;
+            }
+            .envelope-pockets::after {
+                border-right-width: 170px;
+                border-bottom-width: 140px;
+                border-left-width: 170px;
+            }
+        }
+
+        /* The Letter inside */
+        .letter {
+            position: absolute;
+            top: 15px;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            padding: 25px;
+            z-index: 2;
+            transition: transform 0.8s ease 0.6s, z-index 0.1s ease 0.8s;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--gold-light);
+            text-align: center;
+        }
+
+        .envelope-wrapper.open .letter {
+            transform: translateY(-130px) scale(1.05);
+            z-index: 5;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .envelope-wrapper.open .letter {
+                transform: translateY(-100px) scale(1.05);
+            }
+        }
+
+        .letter-content h3 {
+            font-family: var(--heading-font);
+            color: var(--burgundy);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .letter-content h2 {
+            font-family: var(--script-font);
+            color: var(--gold-dark);
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .letter-content p {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            font-family: var(--sans-font);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Wax Seal */
+        .wax-seal {
+            position: absolute;
+            top: calc(50% - 40px);
+            left: calc(50% - 40px);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #d4af37 20%, #aa7c11 80%);
+            border-radius: 50%;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,255,255,0.4);
+            transition: transform 0.3s ease, opacity 0.5s ease 0.4s;
+            cursor: pointer;
+        }
+
+        .wax-seal::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .wax-seal span {
+            font-family: var(--heading-font);
+            font-weight: bold;
+            color: #4a0e1b;
+            font-size: 1.4rem;
+            pointer-events: none;
+        }
+
+        .wax-seal:hover {
+            transform: scale(1.1);
+        }
+
+        .envelope-wrapper.open .wax-seal {
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            color: var(--gold-light);
+            font-family: var(--sans-font);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+
+        /* --- MAIN ONE-VIEW CONTAINER --- */
+        #main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(26, 5, 9, 0.65), rgba(26, 5, 9, 0.65)), url("Emilie's Terrace.webp") no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto; /* Fallback for small screens */
+        }
+
+        #main-content.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Floating Invite Badge */
+        .invite-only-badge {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            min-width: 96px;
+            height: 34px;
+            padding: 0 14px;
+            background-color: white;
+            border: 2px solid var(--gold);
+            border-radius: 999px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            color: var(--gold-dark);
+            font-family: var(--sans-font);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* --- THE ONE-VIEW INVITATION CARD --- */
+        .invitation-card {
+            background:
+                radial-gradient(circle at 50% 16%, rgba(255, 211, 220, 0.16), rgba(255, 211, 220, 0) 34%),
+                linear-gradient(145deg, rgba(253, 252, 247, 0.78), rgba(245, 239, 228, 0.7));
+            backdrop-filter: blur(8px) saturate(1.05);
+            -webkit-backdrop-filter: blur(8px) saturate(1.05);
+            border: 1px solid rgba(197, 160, 89, 0.5);
+            padding: 35px 45px;
+            border-radius: 12px;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.38);
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            z-index: 10;
+            max-height: 95vh;
+            overflow-y: auto; /* Scroll inside card if content overflows on small heights */
+        }
+
+        /* Custom scrollbar for card */
+        .invitation-card::-webkit-scrollbar {
+            width: 4px;
+        }
+        .invitation-card::-webkit-scrollbar-thumb {
+            background: var(--gold-light);
+            border-radius: 2px;
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            border: 2px solid var(--gold);
+            opacity: 0.35;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        /* Card Content Styling */
+        .card-header-title {
+            font-family: var(--heading-font);
+            font-size: 1.15rem;
+            letter-spacing: 5px;
+            color: var(--burgundy);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .card-main-title {
+            font-family: var(--script-font);
+            font-size: 4.2rem;
+            color: var(--gold-dark);
+            line-height: 1;
+            margin: 5px 0;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.02);
+        }
+
+        .card-subtitle {
+            font-family: var(--heading-font);
+            font-size: 1.35rem;
+            letter-spacing: 2px;
+            color: var(--burgundy);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            font-family: var(--serif-font);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-color);
+            max-width: 580px;
+            margin: 0 auto 15px auto;
+            line-height: 1.5;
+        }
+
+        /* --- THE CELEBRANTS PHOTOS CONTAINER --- */
+        .photos-container {
+            height: 310px;
+            margin: 18px auto 10px;
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+        }
+
+        .photo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .photo-wrapper.edel-portrait {
+            left: 34px;
+            top: 0;
+        }
+
+        .photo-wrapper.akaliza-portrait {
+            right: 22px;
+            top: 58px;
+            z-index: 3;
+        }
+
+        .photo-frame {
+            width: 225px;
+            height: 255px;
+            overflow: visible;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            box-shadow: none;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-frame::before,
+        .photo-frame::after {
+            content: none;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-5px);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0;
+            display: block;
+            mix-blend-mode: normal;
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+            filter:
+                saturate(1.04)
+                contrast(1.03)
+                brightness(1.02)
+                drop-shadow(0 18px 18px rgba(80, 34, 42, 0.14))
+                drop-shadow(0 0 18px rgba(253, 252, 247, 0.7));
+            transform: scale(1.03);
+        }
+
+        .akaliza-portrait .photo-frame {
+            width: 255px;
+            height: 235px;
+        }
+
+        .edel-portrait .photo-frame img {
+            transform: scale(1.07);
+            -webkit-mask-image: radial-gradient(ellipse 62% 82% at 50% 38%, #000 42%, rgba(0, 0, 0, 0.82) 56%, rgba(0, 0, 0, 0.28) 70%, transparent 90%);
+            mask-image: radial-gradient(ellipse 62% 82% at 50% 38%, #000 42%, rgba(0, 0, 0, 0.82) 56%, rgba(0, 0, 0, 0.28) 70%, transparent 90%);
+        }
+
+        .akaliza-portrait .photo-frame img {
+            transform: scale(1.1);
+            -webkit-mask-image: radial-gradient(ellipse 74% 78% at 50% 36%, #000 42%, rgba(0, 0, 0, 0.76) 55%, rgba(0, 0, 0, 0.22) 68%, transparent 86%);
+            mask-image: radial-gradient(ellipse 74% 78% at 50% 36%, #000 42%, rgba(0, 0, 0, 0.76) 55%, rgba(0, 0, 0, 0.22) 68%, transparent 86%);
+        }
+
+        #img-edel {
+            object-position: center 50%;
+        }
+
+        #img-akaliza {
+            object-position: center 44%;
+        }
+
+        .portrait-caption {
+            min-width: 130px;
+            text-align: center;
+        }
+
+        .edel-portrait .portrait-caption {
+            order: -1;
+            transform: translateY(28px);
+        }
+
+        .akaliza-portrait .portrait-caption {
+            transform: translateY(44px);
+        }
+
+        .photo-name {
+            font-family: var(--heading-font);
+            font-size: 1.45rem;
+            color: var(--burgundy);
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .photo-label {
+            font-family: var(--sans-font);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* --- DETAILS BLOCK --- */
+        .card-details {
+            border-top: 1px solid var(--gold-light);
+            border-bottom: 1px solid var(--gold-light);
+            padding: 15px 0;
+            margin: 15px auto;
+            max-width: 550px;
+        }
+
+        .details-date {
+            font-family: var(--heading-font);
+            font-size: 1.45rem;
+            letter-spacing: 3px;
+            color: var(--burgundy);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .details-time {
+            font-family: var(--serif-font);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .details-venue {
+            font-family: var(--sans-font);
+            font-size: 0.8rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* --- DRESS CODE STRIP --- */
+        .dress-code-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .dress-code-label {
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .color-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .dot-red { background-color: #c9184a; }
+        .dot-white { background-color: #ffffff; border: 1px solid var(--gold-light); }
+        .dot-pink { background-color: #ff8fa3; }
+
+        .card-footer-quote {
+            font-family: var(--serif-font);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- ACTION BUTTONS --- */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-elegant {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background-color: var(--burgundy);
+            color: white;
+            text-decoration: none;
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            border: 1px solid var(--burgundy);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(92, 19, 34, 0.2);
+            font-weight: 600;
+        }
+
+        .btn-elegant:hover {
+            background-color: transparent;
+            color: var(--burgundy);
+            box-shadow: 0 6px 15px rgba(92, 19, 34, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-elegant-outline {
+            background-color: transparent;
+            color: var(--burgundy);
+            border: 1px solid var(--burgundy);
+            box-shadow: none;
+        }
+
+        .btn-elegant-outline:hover {
+            background-color: var(--burgundy);
+            color: white;
+            box-shadow: 0 4px 10px rgba(92, 19, 34, 0.2);
+        }
+
+
+        /* --- MINI COUNTDOWN TIMER --- */
+        .mini-countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            font-family: var(--sans-font);
+        }
+
+        .countdown-item {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold-dark);
+            font-weight: 500;
+        }
+
+        .countdown-val {
+            font-family: var(--heading-font);
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--burgundy);
+        }
+
+
+        /* --- MODAL DIALOGS --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 5, 9, 0.85);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background-color: var(--bg-color);
+            border: 1px solid var(--gold);
+            padding: 35px 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        /* Custom scrollbar for modal */
+        .modal-box::-webkit-scrollbar {
+            width: 4px;
+        }
+        .modal-box::-webkit-scrollbar-thumb {
+            background: var(--gold-light);
+            border-radius: 2px;
+        }
+
+        .modal-box::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: 1px dashed var(--gold-light);
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--gold-dark);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: var(--burgundy);
+        }
+
+        .modal-title {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .modal-subtitle {
+            font-family: var(--script-font);
+            font-size: 2.2rem;
+            color: var(--gold-dark);
+            margin-bottom: 25px;
+        }
+
+
+        /* --- SCHEDULE TIMELINE IN MODAL --- */
+        .timeline {
+            position: relative;
+            max-width: 500px;
+            margin: 10px auto 0 auto;
+            text-align: left;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 1px;
+            background-color: var(--gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 45px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 20px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-time {
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-family: var(--heading-font);
+            font-size: 1.15rem;
+            color: var(--burgundy);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+
+        /* --- RSVP FORM IN MODAL --- */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold-dark);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 4px;
+            font-family: var(--serif-font);
+            font-size: 1.05rem;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--burgundy);
+            box-shadow: 0 0 8px rgba(92, 19, 34, 0.1);
+            background-color: white;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 12px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            background-color: var(--bg-color);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            background-color: var(--burgundy);
+            color: white;
+            border-color: var(--burgundy);
+            box-shadow: 0 4px 10px rgba(92, 19, 34, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--burgundy);
+            color: white;
+            border: 1px solid var(--burgundy);
+            font-family: var(--sans-font);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(92, 19, 34, 0.2);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .btn-submit:hover {
+            background-color: transparent;
+            color: var(--burgundy);
+            box-shadow: 0 8px 20px rgba(92, 19, 34, 0.1);
+        }
+
+        /* RSVP Success Overlay */
+        .rsvp-success {
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .rsvp-success.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .rsvp-success-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            animation: scaleUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleUp {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+
+        /* --- ROSE PETALS CANVAS ANIMATION --- */
+        #petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-height: 750px) {
+            .invitation-card {
+                padding: 20px 30px;
+            }
+            .photos-container {
+                height: 230px;
+                max-width: 540px;
+            }
+            .photo-wrapper.edel-portrait {
+                left: 28px;
+            }
+            .photo-wrapper.akaliza-portrait {
+                right: 18px;
+                top: 42px;
+            }
+            .photo-frame {
+                width: 170px;
+                height: 195px;
+            }
+            .akaliza-portrait .photo-frame {
+                width: 195px;
+                height: 180px;
+            }
+            .photo-name {
+                font-size: 1.15rem;
+            }
+            .photo-label {
+                font-size: 0.6rem;
+            }
+            .card-main-title {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            #main-content {
+                align-items: center;
+                padding: 8px;
+            }
+            .invitation-card {
+                max-height: calc(100dvh - 16px);
+                overflow: hidden;
+                padding: 14px 16px 12px;
+            }
+            .invitation-card::before {
+                top: 8px;
+                bottom: 8px;
+                left: 8px;
+                right: 8px;
+            }
+            .card-header-title {
+                margin-bottom: 0;
+            }
+            .card-main-title {
+                margin: 0;
+            }
+            .card-subtitle {
+                margin-bottom: 6px;
+            }
+            .card-description {
+                margin-bottom: 4px;
+                line-height: 1.2;
+            }
+            .photos-container {
+                height: 178px;
+                margin: 4px auto 0;
+                max-width: 100%;
+            }
+            .photo-wrapper {
+                gap: 4px;
+            }
+            .photo-wrapper.edel-portrait {
+                left: -8px;
+                top: -8px;
+            }
+            .photo-wrapper.akaliza-portrait {
+                right: -10px;
+                top: 24px;
+            }
+            .photo-frame {
+                width: 118px;
+                height: 150px;
+            }
+            .akaliza-portrait .photo-frame {
+                width: 136px;
+                height: 126px;
+            }
+            .portrait-caption {
+                min-width: 82px;
+            }
+            .edel-portrait .portrait-caption {
+                transform: translateY(18px);
+            }
+            .akaliza-portrait .portrait-caption {
+                transform: translateY(24px);
+            }
+            .photo-name {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+            .photo-label {
+                font-size: 0.52rem;
+                letter-spacing: 1.2px;
+            }
+            .card-main-title {
+                font-size: 2.8rem;
+            }
+            .card-subtitle {
+                font-size: 1.1rem;
+            }
+            .details-date {
+                font-size: 1.2rem;
+            }
+            .card-details {
+                padding: 8px 0;
+                margin: 6px auto;
+            }
+            .details-date {
+                margin-bottom: 0;
+            }
+            .details-time {
+                margin-bottom: 3px;
+                line-height: 1.1;
+            }
+            .details-venue {
+                line-height: 1.2;
+            }
+            .dress-code-strip {
+                gap: 8px;
+                margin: 6px 0;
+            }
+            .color-dots {
+                gap: 5px;
+            }
+            .card-footer-quote {
+                margin-bottom: 6px;
+                line-height: 1.2;
+            }
+            .action-buttons {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 8px;
+                margin-top: 6px;
+            }
+            .btn-elegant {
+                width: auto;
+                justify-content: center;
+                padding: 8px 12px;
+                letter-spacing: 1.5px;
+                white-space: nowrap;
+            }
+            .mini-countdown {
+                gap: 6px;
+                margin-top: 7px;
+            }
+        }
+
+        @media (max-width: 550px) and (max-height: 720px) {
+            .invitation-card {
+                padding: 10px 14px 8px;
+            }
+            .card-description {
+                margin-bottom: 0;
+            }
+            .photos-container {
+                height: 150px;
+                margin-top: 0;
+            }
+            .photo-wrapper.edel-portrait {
+                top: -14px;
+            }
+            .photo-wrapper.akaliza-portrait {
+                top: 10px;
+            }
+            .photo-frame {
+                width: 105px;
+                height: 136px;
+            }
+            .akaliza-portrait .photo-frame {
+                width: 124px;
+                height: 112px;
+            }
+            .edel-portrait .portrait-caption {
+                transform: translateY(14px);
+            }
+            .akaliza-portrait .portrait-caption {
+                transform: translateY(18px);
+            }
+            .card-details {
+                padding: 6px 0;
+                margin: 4px auto;
+            }
+            .dress-code-strip {
+                margin: 4px 0;
+            }
+            .card-footer-quote {
+                margin-bottom: 4px;
+            }
+            .action-buttons {
+                margin-top: 4px;
+            }
+            .btn-elegant {
+                padding: 7px 10px;
+            }
+            .mini-countdown {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Rose Petals Canvas Effect -->
+    <canvas id="petals-canvas"></canvas>
+
+    <!-- Background Audio -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/7/70/Debussy_Clair_de_Lune.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Invite-only Badge -->
+    <div class="invite-only-badge">Invite Only</div>
+
+    <!-- --- ENVELOPE OPENING EXPERIENCE --- -->
+    <div id="envelope-container">
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope">
+                <div class="envelope-pockets"></div>
+                <div class="letter">
+                    <div class="letter-content">
+                        <h3>Double Blessing Celebration</h3>
+                        <h2>Edel & Akaliza</h2>
+                        <p>June 26, 2026</p>
+                    </div>
+                </div>
+            </div>
+            <div class="wax-seal" id="wax-seal">
+                <span>E & A</span>
+            </div>
+            <div class="click-hint">Click Seal to Open</div>
+        </div>
+    </div>
+
+
+    <!-- --- MAIN ONE-VIEW INVITATION CONTENT --- -->
+    <div id="main-content">
+
+        <div class="invitation-card animate__animated animate__fadeIn">
+            
+            <div class="card-header-title">Double Blessing Celebration</div>
+            <div class="card-main-title">Blooming Together</div>
+            <div class="card-subtitle">Edel & Akaliza</div>
+            
+            <div class="card-description" spellcheck="false">
+                Join us as we honor two beautiful milestones.
+            </div>
+
+            <!-- --- THE CELEBRANTS PHOTOS --- -->
+            <div class="photos-container">
+                <!-- Edel -->
+                <div class="photo-wrapper edel-portrait">
+                    <div class="portrait-caption">
+                        <div class="photo-name">Edel's</div>
+                        <div class="photo-label">Birthday</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img id="img-edel" src="Edel.png?v=transparent" alt="Edel">
+                    </div>
+                </div>
+
+                <!-- Akaliza -->
+                <div class="photo-wrapper akaliza-portrait">
+                    <div class="photo-frame">
+                        <img id="img-akaliza" src="Akaliza.png?v=transparent" alt="Akaliza">
+                    </div>
+                    <div class="portrait-caption">
+                        <div class="photo-name">Akaliza's</div>
+                        <div class="photo-label">Half Birthday</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --- DETAILS BLOCK --- -->
+            <div class="card-details">
+                <div class="details-date">Friday, June 26, 2026</div>
+                <div class="details-time">At Six O'clock in the Evening</div>
+                <div class="details-venue">Émilie's Terrace &bull; 1 Rideau St, Ottawa, ON</div>
+            </div>
+
+            <!-- --- DRESS CODE STRIP --- -->
+            <div class="dress-code-strip">
+                <span class="dress-code-label">Dress Code:</span>
+                <div class="color-dots">
+                    <div class="color-dot dot-red" title="Red"></div>
+                    <div class="color-dot dot-white" title="White"></div>
+                    <div class="color-dot dot-pink" title="Pink"></div>
+                </div>
+                <span class="dress-code-label" style="color: var(--text-color); text-transform: none; font-weight: normal; font-family: var(--serif-font); font-style: italic;">Red, White, or Pink</span>
+            </div>
+
+            <!-- --- ACTION BUTTONS --- -->
+            <div class="action-buttons">
+                <a href="https://www.opentable.ca/booking/view?rid=1047376&confnumber=115999&invitationId=a708b238-4872-4caa-a430-04ceebb156fd" target="_blank" rel="noopener" class="btn-elegant">
+                    <i class="fa-solid fa-heart"></i> RSVP Now
+                </a>
+                <a href="https://maps.google.com/?q=1+Rideau+St,+Ottawa,+ON+K1N+8S7" target="_blank" class="btn-elegant btn-elegant-outline">
+                    <i class="fa-solid fa-map-location-dot"></i> Directions
+                </a>
+            </div>
+
+            <!-- --- MINI COUNTDOWN TIMER --- -->
+            <div class="mini-countdown">
+                <div class="countdown-item"><span class="countdown-val" id="days">00</span> Days</div>
+                <div class="countdown-item">&bull;</div>
+                <div class="countdown-item"><span class="countdown-val" id="hours">00</span> Hours</div>
+                <div class="countdown-item">&bull;</div>
+                <div class="countdown-item"><span class="countdown-val" id="minutes">00</span> Mins</div>
+                <div class="countdown-item">&bull;</div>
+                <div class="countdown-item"><span class="countdown-val" id="seconds">00</span> Secs</div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- --- RSVP MODAL --- -->
+    <div class="modal-overlay" id="rsvp-modal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal('rsvp-modal')">&times;</span>
+            <h2 class="modal-title">RSVP</h2>
+            <p class="modal-subtitle">Kindly Respond</p>
+            
+            <!-- Success Overlay inside Modal -->
+            <div class="rsvp-success" id="rsvp-success-overlay">
+                <div class="rsvp-success-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="modal-title" style="font-size: 1.6rem; margin-bottom: 10px;">Thank You!</h3>
+                <p class="modal-subtitle" id="rsvp-success-msg" style="font-size: 1.5rem; margin-bottom: 20px;">Your response has been received.</p>
+                <p style="font-style: italic; max-width: 450px; line-height: 1.6; color: var(--text-color); margin: 0 auto;">
+                    We are absolutely thrilled to celebrate these sweet milestones with you. More details will be sent to your email.
+                </p>
+                <button class="btn-elegant" style="margin-top: 25px;" onclick="resetRSVPForm()">
+                    <i class="fa-solid fa-pen-to-square"></i> Change Response
+                </button>
+            </div>
+
+            <!-- RSVP Form -->
+            <form id="rsvp-form" onsubmit="handleRSVPSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label" for="guest-name">Full Name</label>
+                    <input type="text" id="guest-name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="guest-email">Email Address</label>
+                    <input type="email" id="guest-email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Will you attend?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="attend-yes" name="attendance" value="yes" checked required>
+                            <label for="attend-yes" class="radio-label">Accepts with Pleasure</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="attend-no" name="attendance" value="no" required>
+                            <label for="attend-no" class="radio-label">Declines with Regret</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="attendance-details">
+                    <div class="form-group">
+                        <label class="form-label" for="guest-count">Number of Guests</label>
+                        <select id="guest-count" class="form-control">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="dietary">Dietary Restrictions</label>
+                        <select id="dietary" class="form-control">
+                            <option value="none">No Dietary Restrictions</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten-free">Gluten-Free</option>
+                            <option value="other">Other (Please specify below)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Message for Edel & Akaliza</label>
+                    <textarea id="message" class="form-control" rows="3" placeholder="Leave a warm note..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Response</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JavaScript code -->
+    <script>
+        // --- ENVELOPE INTERACTION ---
+        document.getElementById('wax-seal').addEventListener('click', function() {
+            const wrapper = document.getElementById('envelope-wrapper');
+            const container = document.getElementById('envelope-container');
+            const mainContent = document.getElementById('main-content');
+            const audio = document.getElementById('bg-music');
+            const musicBtn = document.getElementById('music-btn');
+
+            // Add open class to envelope (starts flap and letter animations)
+            wrapper.classList.add('open');
+
+            // Play background music
+            setTimeout(() => {
+                audio.play().then(() => {
+                    musicBtn?.classList.add('playing');
+                }).catch(err => {
+                    console.log("Audio autoplay blocked or failed:", err);
+                });
+            }, 1000);
+
+            // Transition to main content
+            setTimeout(() => {
+                container.classList.add('fade-out');
+                mainContent.classList.add('visible');
+                
+                // Start rose petals falling
+                startPetalsAnimation();
+            }, 2200);
+        });
+
+        // --- BACKGROUND MUSIC TOGGLE ---
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+
+        if (musicBtn) {
+            musicBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    musicBtn.classList.add('playing');
+                } else {
+                    audio.pause();
+                    musicBtn.classList.remove('playing');
+                }
+            });
+        }
+
+
+        // --- MODAL CONTROLS ---
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Close modals when clicking outside the modal-box
+        window.addEventListener('click', function(event) {
+            const rsvpModal = document.getElementById('rsvp-modal');
+            
+            if (event.target === rsvpModal) {
+                closeModal('rsvp-modal');
+            }
+        });
+
+
+        // --- COUNTDOWN TIMER ---
+        // Target date: June 26, 2026 at 18:00:00 (6:00 PM)
+        const targetDate = new Date(2026, 5, 26, 18, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+
+        // --- RSVP FORM HANDLING ---
+        const attendYes = document.getElementById('attend-yes');
+        const attendNo = document.getElementById('attend-no');
+        const attendanceDetails = document.getElementById('attendance-details');
+
+        attendYes.addEventListener('change', function() {
+            if (this.checked) {
+                attendanceDetails.style.display = 'block';
+            }
+        });
+
+        attendNo.addEventListener('change', function() {
+            if (this.checked) {
+                attendanceDetails.style.display = 'none';
+            }
+        });
+
+        // Check if RSVP is already saved in localStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedRSVP = localStorage.getItem('edel_akaliza_rsvp');
+            if (savedRSVP) {
+                const rsvpData = JSON.parse(savedRSVP);
+                showRSVPSuccess(rsvpData);
+            }
+        });
+
+        function handleRSVPSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('guest-name').value;
+            const email = document.getElementById('guest-email').value;
+            const attending = document.querySelector('input[name="attendance"]:checked').value === 'yes';
+            const guestCount = attending ? document.getElementById('guest-count').value : 0;
+            const dietary = attending ? document.getElementById('dietary').value : 'none';
+            const message = document.getElementById('message').value;
+
+            const rsvpData = {
+                name,
+                email,
+                attending,
+                guestCount,
+                dietary,
+                message,
+                date: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            localStorage.setItem('edel_akaliza_rsvp', JSON.stringify(rsvpData));
+
+            // Show success screen
+            showRSVPSuccess(rsvpData);
+        }
+
+        function showRSVPSuccess(data) {
+            const overlay = document.getElementById('rsvp-success-overlay');
+            const msgEl = document.getElementById('rsvp-success-msg');
+            
+            if (data.attending) {
+                msgEl.innerText = `We can't wait to celebrate with you, ${data.name}!`;
+            } else {
+                msgEl.innerText = `You will be missed, ${data.name}.`;
+            }
+
+            overlay.classList.add('active');
+        }
+
+        function resetRSVPForm() {
+            localStorage.removeItem('edel_akaliza_rsvp');
+            document.getElementById('rsvp-success-overlay').classList.remove('active');
+            document.getElementById('rsvp-form').reset();
+            attendanceDetails.style.display = 'block';
+        }
+
+
+        // --- ROSE PETALS FALLING EFFECT (CANVAS) ---
+        function startPetalsAnimation() {
+            const canvas = document.getElementById('petals-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const petalCount = 45;
+            const petals = [];
+
+            function drawPetal(ctx, x, y, r, angle, scaleX, scaleY) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(angle);
+                ctx.scale(scaleX, scaleY);
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-r, -r/2, -r, r, 0, r*1.5);
+                ctx.bezierCurveTo(r, r, r, -r/2, 0, 0);
+                
+                const grad = ctx.createRadialGradient(0, r/2, 0, 0, r/2, r);
+                grad.addColorStop(0, '#ffccd5'); // Soft pink center
+                grad.addColorStop(0.6, '#ff8fa3'); // Rose pink body
+                grad.addColorStop(1, '#c9184a'); // Rich crimson edge
+                
+                ctx.fillStyle = grad;
+                ctx.fill();
+                ctx.restore();
+            }
+
+            class Petal {
+                constructor() {
+                    this.reset();
+                    this.y = Math.random() * height;
+                }
+
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = -20;
+                    this.r = 8 + Math.random() * 10;
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.spinSpeed = (Math.random() - 0.5) * 0.03;
+                    this.speedY = 1 + Math.random() * 1.5;
+                    this.speedX = (Math.random() - 0.5) * 0.8;
+                    this.scaleX = 0.6 + Math.random() * 0.4;
+                    this.scaleY = 0.8 + Math.random() * 0.4;
+                    this.oscillationSpeed = 0.01 + Math.random() * 0.02;
+                    this.oscillationDistance = 0.5 + Math.random() * 1.5;
+                    this.time = Math.random() * 100;
+                }
+
+                update() {
+                    this.time += this.oscillationSpeed;
+                    this.y += this.speedY;
+                    this.x += this.speedX + Math.sin(this.time) * this.oscillationDistance;
+                    this.angle += this.spinSpeed;
+                    this.scaleX = Math.sin(this.time * 1.5) * 0.8;
+
+                    if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+                        this.reset();
+                    }
+                }
+
+                draw() {
+                    drawPetal(ctx, this.x, this.y, this.r, this.angle, this.scaleX, this.scaleY);
+                }
+            }
+
+            for (let i = 0; i < petalCount; i++) {
+                petals.push(new Petal());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                petals.forEach(petal => {
+                    petal.update();
+                    petal.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+    </script>
+</body>
+</html>
