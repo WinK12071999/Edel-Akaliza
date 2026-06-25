@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Tables — Edel & Akaliza</title>
+    <meta name="description" content="Choose the available RSVP table for Edel & Akaliza's double blessing celebration.">
+    <meta property="og:title" content="RSVP for Edel & Akaliza">
+    <meta property="og:description" content="Our first table is full. Please RSVP using the second table.">
+    <meta property="og:image" content="https://edel-akaliza.vercel.app/whatsapp-preview.png">
+    <meta property="og:url" content="https://edel-akaliza.vercel.app/rsvp.html">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #fdfcf7;
+            --text-color: #2c2523;
+            --gold: #c5a059;
+            --gold-light: #e5d5b7;
+            --gold-dark: #9a7632;
+            --burgundy: #5c1322;
+            --burgundy-deep: #1a0509;
+            --blush: #fcf0f0;
+            --serif-font: 'Cormorant Garamond', serif;
+            --heading-font: 'Cinzel', serif;
+            --script-font: 'Alex Brush', cursive;
+            --sans-font: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            color: var(--text-color);
+            font-family: var(--serif-font);
+            background:
+                linear-gradient(rgba(26, 5, 9, 0.76), rgba(26, 5, 9, 0.82)),
+                url("Emilie's Terrace.webp") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 14px;
+        }
+
+        .rsvp-card {
+            width: min(920px, 100%);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(255, 211, 220, 0.22), rgba(255, 211, 220, 0) 32%),
+                linear-gradient(145deg, rgba(253, 252, 247, 0.95), rgba(245, 239, 228, 0.92));
+            border: 1px solid rgba(197, 160, 89, 0.62);
+            border-radius: 16px;
+            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42);
+            padding: 44px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .rsvp-card::before {
+            content: '';
+            position: absolute;
+            inset: 14px;
+            border: 2px solid rgba(197, 160, 89, 0.35);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            font-family: var(--heading-font);
+            color: var(--burgundy);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            font-family: var(--script-font);
+            color: var(--gold-dark);
+            font-size: clamp(3.4rem, 9vw, 5.4rem);
+            font-weight: 400;
+            line-height: 0.95;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-family: var(--heading-font);
+            color: var(--burgundy);
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .message {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-size: 1.25rem;
+            line-height: 1.55;
+        }
+
+        .tables {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin: 28px 0 26px;
+            text-align: left;
+        }
+
+        .table-option {
+            background: rgba(255, 255, 255, 0.74);
+            border: 1px solid rgba(197, 160, 89, 0.42);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            box-shadow: 0 12px 28px rgba(92, 19, 34, 0.08);
+        }
+
+        .table-option.available {
+            border-color: var(--burgundy);
+            box-shadow: 0 16px 34px rgba(92, 19, 34, 0.16);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--sans-font);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            border-radius: 999px;
+            padding: 7px 11px;
+            margin-bottom: 16px;
+        }
+
+        .status.full {
+            color: #7d1c2f;
+            background: rgba(125, 28, 47, 0.1);
+            border: 1px solid rgba(125, 28, 47, 0.22);
+        }
+
+        .status.open {
+            color: var(--gold-dark);
+            background: rgba(197, 160, 89, 0.14);
+            border: 1px solid rgba(197, 160, 89, 0.32);
+        }
+
+        .table-title {
+            font-family: var(--heading-font);
+            color: var(--burgundy);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .table-copy {
+            font-size: 1.08rem;
+            line-height: 1.45;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            width: 100%;
+            min-height: 46px;
+            border-radius: 6px;
+            border: 1px solid var(--burgundy);
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .btn-disabled {
+            color: rgba(92, 19, 34, 0.55);
+            background: rgba(92, 19, 34, 0.06);
+            border-color: rgba(92, 19, 34, 0.2);
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            color: white;
+            background: var(--burgundy);
+            box-shadow: 0 8px 18px rgba(92, 19, 34, 0.22);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(92, 19, 34, 0.24);
+        }
+
+        .note {
+            max-width: 680px;
+            margin: 0 auto 22px;
+            font-family: var(--sans-font);
+            color: var(--gold-dark);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            line-height: 1.55;
+            text-transform: uppercase;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--burgundy);
+            font-family: var(--sans-font);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 720px) {
+            body {
+                align-items: flex-start;
+                padding-top: 18px;
+            }
+
+            .rsvp-card {
+                padding: 34px 20px 28px;
+            }
+
+            .rsvp-card::before {
+                inset: 9px;
+            }
+
+            .message {
+                font-size: 1.12rem;
+                margin-bottom: 22px;
+            }
+
+            .tables {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="rsvp-card">
+        <div class="eyebrow">Double Blessing Celebration</div>
+        <h1>Edel & Akaliza</h1>
+        <div class="subtitle">RSVP Tables</div>
+
+        <p class="message">
+            We are so grateful for all the love. Our first table is now full, so we have added a second table for more guests to join the celebration.
+        </p>
+
+        <section class="tables" aria-label="RSVP table options">
+            <article class="table-option">
+                <div class="status full"><i class="fa-solid fa-circle-check"></i> Table 1 Full</div>
+                <h2 class="table-title">Original Table</h2>
+                <p class="table-copy">
+                    This first RSVP table has reached capacity. Thank you to everyone who already reserved here.
+                </p>
+                <span class="btn btn-disabled" aria-disabled="true">
+                    <i class="fa-solid fa-lock"></i> Fully Booked
+                </span>
+            </article>
+
+            <article class="table-option available">
+                <div class="status open"><i class="fa-solid fa-heart"></i> Table 2 Open</div>
+                <h2 class="table-title">New Table</h2>
+                <p class="table-copy">
+                    Please use this second RSVP link to reserve your spot for Edel & Akaliza's celebration.
+                </p>
+                <a class="btn btn-primary" href="https://www.opentable.ca/booking/view?rid=1047376&confnumber=116007&invitationId=65030ae8-2cf3-485e-84ee-edec28aba09b" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-calendar-check"></i> RSVP at Table 2
+                </a>
+            </article>
+        </section>
+
+        <p class="note">
+            Kindly choose the new table above so we can keep the guest list organized across both tables.
+        </p>
+
+        <a class="back-link" href="index.html">
+            <i class="fa-solid fa-arrow-left"></i> Back to Invitation
+        </a>
+    </main>
+</body>
+</html>
